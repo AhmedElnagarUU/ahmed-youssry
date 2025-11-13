@@ -103,11 +103,11 @@ export default function ProjectWorkflow() {
 
         {/* Timeline Container */}
         <div className="relative">
-          {/* Vertical Center Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-blue-500 transform -translate-x-1/2"></div>
+          {/* Vertical Line - Left on mobile, center on desktop */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-blue-500 md:transform md:-translate-x-1/2"></div>
 
           {/* Steps */}
-          <div className="space-y-12">
+          <div className="space-y-8 md:space-y-12">
             {steps.map((step, index) => {
               const Icon = step.icon;
               const isEven = index % 2 === 0;
@@ -115,53 +115,44 @@ export default function ProjectWorkflow() {
               return (
                 <div
                   key={index}
-                  className={`relative flex items-center ${isEven ? 'flex-row' : 'flex-row-reverse'}`}
+                  className={`relative flex items-center flex-row ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}
                 >
-                  {/* Step Content */}
-                  <div className={`w-[45%] ${isEven ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
-                    <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-blue-500/20 hover:border-purple-500/50 transition-all">
-                      <div className={`flex items-center mb-3 ${isEven ? 'justify-end' : 'justify-start'}`}>
-                        {!isEven && (
-                          <span className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-3 flex-shrink-0">
-                            {index + 1}
-                          </span>
-                        )}
+                  {/* Step Content - Full width on mobile, 45% on desktop */}
+                  <div className={`w-full md:w-[45%] pl-12 md:pl-0 ${isEven ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left'} text-left`}>
+                    <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-blue-500/20 hover:border-purple-500/50 transition-all">
+                      <div className={`flex items-center mb-3 justify-start ${isEven ? 'md:justify-end' : 'md:justify-start'}`}>
+                        <span className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-3 flex-shrink-0">
+                          {index + 1}
+                        </span>
                         <div className="flex items-center flex-row">
                           <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
                             <Icon className="w-5 h-5 text-white" />
                           </div>
-                          <h3 className="text-lg font-semibold text-white">
+                          <h3 className="text-base md:text-lg font-semibold text-white">
                             {step.title}
                           </h3>
                         </div>
-                        {isEven && (
-                          <span className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm ml-3 flex-shrink-0">
-                            {index + 1}
-                          </span>
-                        )}
                       </div>
-                      <ul className={`text-sm text-slate-300 space-y-1 ${isEven ? 'text-right' : 'text-left'}`}>
+                      <ul className="text-sm text-slate-300 space-y-1 text-left list-disc list-inside">
                         {step.items.map((item, itemIndex) => (
-                          <li key={itemIndex} className={isEven ? 'list-none' : 'list-disc list-inside'}>
-                            {item}
-                          </li>
+                          <li key={itemIndex}>{item}</li>
                         ))}
                       </ul>
                       {step.deliverable && (
-                        <p className={`text-xs text-blue-400 mt-3 italic ${isEven ? 'text-right' : 'text-left'}`}>
+                        <p className="text-xs text-blue-400 mt-3 italic text-left">
                           Deliverable: {step.deliverable}
                         </p>
                       )}
                     </div>
                   </div>
 
-                  {/* Center Circle */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-slate-900 rounded-full border-4 border-blue-500 flex items-center justify-center z-10">
-                    <div className="w-4 h-4 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full"></div>
+                  {/* Center Circle - Left on mobile, center on desktop */}
+                  <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 md:w-12 md:h-12 bg-slate-900 rounded-full border-4 border-blue-500 flex items-center justify-center z-10">
+                    <div className="w-2 h-2 md:w-4 md:h-4 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full"></div>
                   </div>
 
-                  {/* Empty space for opposite side */}
-                  <div className="w-[45%]"></div>
+                  {/* Empty space for opposite side - Hidden on mobile */}
+                  <div className="hidden md:block w-[45%]"></div>
                 </div>
               );
             })}
