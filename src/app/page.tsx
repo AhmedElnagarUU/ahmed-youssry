@@ -4,6 +4,7 @@ import ProfessionalSummary from '@/components/ProfessionalSummary';
 import TechnicalSkills from '@/components/TechnicalSkills';
 import ProjectWorkflow from '@/components/ProjectWorkflow';
 import Projects from '@/components/Projects';
+import FollowMe from '@/components/FollowMe';
 import Footer from '@/components/Footer';
 
 export default function Profile() {
@@ -25,6 +26,9 @@ export default function Profile() {
         </section>
         <section>
           <Projects />
+        </section>
+        <section>
+          <FollowMe />
         </section>
       </div>
       <section>
