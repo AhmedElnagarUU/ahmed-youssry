@@ -8,18 +8,28 @@ import Footer from '@/components/Footer';
 
 export default function Profile() {
   return (
-    <>
+    <div className="scroll-smooth">
       <Navbar />
-      <div className="max-w-">
+      <div className="min-h-screen">
         <Header />
-        <div className="space-y-0">
-          <ProfessionalSummary />
-          <TechnicalSkills />
-          <ProjectWorkflow />
-          <Projects />
-        </div>
       </div>
-      <Footer />
-    </>
+      <div className="space-y-0">
+        <section className="min-h-screen">
+          <ProfessionalSummary />
+        </section>
+        <section>
+          <TechnicalSkills />
+        </section>
+        <section className="min-h-screen">
+          <ProjectWorkflow />
+        </section>
+        <section>
+          <Projects />
+        </section>
+      </div>
+      <section>
+        <Footer />
+      </section>
+    </div>
   );
 }
