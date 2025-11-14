@@ -9,7 +9,7 @@ export default function Header() {
       id="home" 
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        // backgroundImage: 'url(https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1920&q=80)',
+        backgroundImage: 'url(https://i.pinimg.com/736x/9a/8c/30/9a8c30c2a24b75455541e7a95c166543.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
