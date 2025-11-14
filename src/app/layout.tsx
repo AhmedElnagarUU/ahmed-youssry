@@ -16,6 +16,28 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Ahmed Youssry - Full Stack Developer",
   description: "Full Stack Developer with 2 years of experience building web applications from planning to deployment. Specialized in Clean Architecture, scalable systems, and modern web technologies.",
+  openGraph: {
+    title: "Ahmed Youssry - Full Stack Developer",
+    description: "Full Stack Developer with 2 years of experience building web applications from planning to deployment. Specialized in Clean Architecture, scalable systems, and modern web technologies.",
+    url: "https://yourdomain.com", // Replace with your actual domain when deployed
+    siteName: "Ahmed Youssry Portfolio",
+    images: [
+      {
+        url: '/Capture.PNG', // Your image path in public folder
+        width: 1200,
+        height: 630,
+        alt: 'Ahmed Youssry - Full Stack Developer Portfolio',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Ahmed Youssry - Full Stack Developer",
+    description: "Full Stack Developer with 2 years of experience building web applications from planning to deployment.",
+    images: ['/Capture.PNG'], // Same image for Twitter
+  },
 };
 
 export default function RootLayout({

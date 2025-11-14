@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
 
@@ -10,7 +12,7 @@ export default function Projects() {
       tech: ['Next.js', 'React', 'TypeScript', 'Arabic/English'],
       github: 'https://github.com/AhmedElnagarUU/qemat',
       live: 'https://qemat-alrafeat.com/en',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop'
+      image: '/qemat.PNG'
     },
     {
       title: 'Clean E-commerce API',
@@ -19,7 +21,7 @@ export default function Projects() {
       tech: ['Node.js', 'Clean Architecture', 'AWS S3', 'TypeScript'],
       github: 'https://github.com/AhmedElnagarUU/clean-ecomarce-API',
       live: null,
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop'
+      image: '/dashboard.PNG'
     },
     {
       title: 'EVO Luxury',
@@ -28,7 +30,7 @@ export default function Projects() {
       tech: ['WordPress', 'PHP', 'Custom Theme', 'Responsive Design'],
       github: null,
       live: 'https://evoluxury.co/en/home/',
-      image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop'
+      image: '/evoluxery.PNG'
     },
     {
       title: 'DHI Design',
@@ -37,7 +39,7 @@ export default function Projects() {
       tech: ['Next.js', 'React', 'TypeScript', 'Responsive'],
       github: 'https://github.com/AhmedElnagarUU/DHI-design',
       live: 'https://ahmedelnagaruu.github.io/DHI-design/',
-      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop'
+      image: '/dhi.PNG'
     },
     {
       title: 'Bakery',
@@ -46,7 +48,7 @@ export default function Projects() {
       tech: ['HTML', 'CSS', 'JavaScript', 'Responsive'],
       github: 'https://github.com/AhmedElnagarUU/Bakery',
       live: 'https://ahmedelnagaruu.github.io/Bakery/',
-      image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&h=600&fit=crop'
+      image: '/bakery.PNG'
     }
   ];
 
@@ -70,55 +72,23 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group relative"
-            >
-              {/* Glass Card */}
-              <div className="relative h-full bg-gradient-to-br from-slate-800/40 via-slate-800/30 to-slate-900/40 backdrop-blur-xl rounded-2xl overflow-hidden border border-red-500/20 hover:border-red-500/40 transition-all duration-500 hover:shadow-[0_8px_32px_rgba(239,68,68,0.3)] hover:-translate-y-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((project, index) => {
+            const projectLink = project.live || project.github;
+            const CardContent = (
+              <>
                 {/* Image Container */}
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-56 overflow-hidden bg-slate-900">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
                     loading={index < 3 ? "eager" : "lazy"}
-                    quality={75}
+                    quality={95}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/60 to-transparent"></div>
-                  
-                  {/* Overlay gradient on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-500/0 to-red-600/0 group-hover:from-red-500/20 group-hover:to-red-600/10 transition-all duration-500"></div>
-                  
-                  {/* Action buttons */}
-                  <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-lg bg-slate-900/80 backdrop-blur-sm border border-red-500/30 flex items-center justify-center text-red-400 hover:bg-red-500/20 hover:border-red-500/50 transition-all"
-                        aria-label="GitHub"
-                      >
-                        <Github className="w-5 h-5" />
-                      </a>
-                    )}
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-lg bg-slate-900/80 backdrop-blur-sm border border-red-500/30 flex items-center justify-center text-red-400 hover:bg-red-500/20 hover:border-red-500/50 transition-all"
-                        aria-label="Live Demo"
-                      >
-                        <ExternalLink className="w-5 h-5" />
-                      </a>
-                    )}
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/40 to-transparent pointer-events-none"></div>
                 </div>
                 
                 {/* Content */}
@@ -137,7 +107,7 @@ export default function Projects() {
                   </p>
                   
                   {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-5">
                     {project.tech.map((tech, techIndex) => (
                       <span
                         key={techIndex}
@@ -148,27 +118,68 @@ export default function Projects() {
                     ))}
                   </div>
                   
-                  {/* View Project Link */}
-                  {(project.live || project.github) && (
-                    <div className="mt-5 pt-5 border-t border-red-500/10">
+                  {/* Action buttons at bottom */}
+                  <div className="flex gap-2 pt-4 border-t border-red-500/10">
+                    {project.github && (
                       <a
-                        href={project.live ?? project.github ?? undefined}
+                        href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-red-400 hover:text-red-300 text-sm font-medium group-hover:gap-3 transition-all duration-300"
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-slate-900/80 backdrop-blur-sm border border-red-500/30 text-red-400 hover:bg-red-500/20 hover:border-red-500/50 transition-all text-sm font-medium"
+                        aria-label="GitHub"
+                        onClick={(e) => e.stopPropagation()}
                       >
-                        View Project
-                        <ArrowUpRight className="w-4 h-4" />
+                        <Github className="w-4 h-4" />
+                        <span>GitHub</span>
                       </a>
-                    </div>
-                  )}
+                    )}
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-slate-900/80 backdrop-blur-sm border border-red-500/30 text-red-400 hover:bg-red-500/20 hover:border-red-500/50 transition-all text-sm font-medium"
+                        aria-label="Live Demo"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        <span>Live</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
                 
                 {/* Shine effect on hover */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"></div>
+              </>
+            );
+
+            return (
+              <div
+                key={index}
+                className="group relative"
+              >
+                {projectLink ? (
+                  <a
+                    href={projectLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block h-full"
+                  >
+                    {/* Glass Card */}
+                    <div className="relative h-full bg-gradient-to-br from-slate-800/40 via-slate-800/30 to-slate-900/40 backdrop-blur-xl rounded-2xl overflow-hidden border border-red-500/20 hover:border-red-500/40 transition-all duration-500 hover:shadow-[0_8px_32px_rgba(239,68,68,0.3)] hover:-translate-y-2 cursor-pointer">
+                      {CardContent}
+                    </div>
+                  </a>
+                ) : (
+                  /* Glass Card - Not clickable if no link */
+                  <div className="relative h-full bg-gradient-to-br from-slate-800/40 via-slate-800/30 to-slate-900/40 backdrop-blur-xl rounded-2xl overflow-hidden border border-red-500/20 hover:border-red-500/40 transition-all duration-500 hover:shadow-[0_8px_32px_rgba(239,68,68,0.3)] hover:-translate-y-2">
+                    {CardContent}
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
