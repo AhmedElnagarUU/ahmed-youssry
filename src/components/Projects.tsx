@@ -149,7 +149,7 @@ export default function Projects() {
                   {(project.live || project.github) && (
                     <div className="mt-5 pt-5 border-t border-red-500/10">
                       <a
-                        href={project.live || project.github}
+                        href={project.live ?? project.github ?? undefined}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-red-400 hover:text-red-300 text-sm font-medium group-hover:gap-3 transition-all duration-300"
