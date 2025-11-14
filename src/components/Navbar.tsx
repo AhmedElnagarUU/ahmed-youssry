@@ -24,7 +24,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`fixed top-4 left-4 right-4 z-50 bg-slate-900/30 backdrop-blur-md border border-red-500/30 transition-all duration-300 ${scrolled ? 'rounded-2xl bg-slate-900/50' : 'rounded-lg'} mx-auto max-w-7xl shadow-[0_0_20px_rgba(239,68,68,0.1)]`}>
+    <nav className={`fixed top-4 left-4 right-4 z-50 bg-slate-900/30 backdrop-blur-md  transition-all duration-300 ${scrolled ? 'rounded-2xl bg-slate-900/50' : 'rounded-lg'} mx-auto max-w-7xl shadow-[0_0_20px_rgba(239,68,68,0.1)]`}>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-3">

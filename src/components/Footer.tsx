@@ -6,6 +6,18 @@ import {
   Globe
 } from 'lucide-react';
 
+// Pinterest Icon Component
+const PinterestIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.72 8.2 6.58 9.7-.09-.79-.17-2.01.03-2.87l1.24-5.26s-.3-.6-.3-1.49c0-1.39.81-2.43 1.81-2.43.85 0 1.26.64 1.26 1.41 0 .85-.54 2.12-.82 3.3-.23.98.49 1.78 1.46 1.78 1.75 0 3.1-1.85 3.1-4.52 0-2.36-1.7-4.01-4.13-4.01-2.81 0-4.46 2.11-4.46 4.29 0 .84.32 1.74.73 2.23.08.1.09.19.07.29l-.28 1.11c-.04.16-.14.2-.33.12-1.24-.58-2.02-2.4-2.02-3.86 0-3.15 2.29-6.05 6.59-6.05 3.46 0 6.15 2.46 6.15 5.75 0 3.43-2.16 6.19-5.15 6.19-1.01 0-1.96-.53-2.28-1.23l-.62 2.36c-.22.87-.82 1.96-1.22 2.63.92.28 1.9.44 2.92.44 5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
+  </svg>
+);
+
 export default function Footer() {
   const links = [
     {
@@ -21,15 +33,21 @@ export default function Footer() {
       color: 'hover:text-red-400'
     },
     {
-      icon: Mail,
-      label: 'Email',
-      url: 'mailto:ahmed@example.com',
-      color: 'hover:text-red-400'
-    },
-    {
       icon: X,
       label: 'X',
       url: 'https://x.com/AhmedE40618',
+      color: 'hover:text-red-400'
+    },
+    {
+      icon: PinterestIcon,
+      label: 'Pinterest',
+      url: 'https://www.pinterest.com/ahmedelnagaruu/',
+      color: 'hover:text-red-400'
+    },
+    {
+      icon: Mail,
+      label: 'Email',
+      url: 'mailto:ahmedElnagaruu@gmail.com',
       color: 'hover:text-red-400'
     },
     {
