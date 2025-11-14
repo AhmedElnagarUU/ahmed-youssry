@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import ScrollArrow from './ScrollArrow';
 import ExpandingCircle from './ExpandingCircle';
 
@@ -8,30 +9,37 @@ export default function Header() {
     <header 
       id="home" 
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        backgroundImage: 'url(https://i.pinimg.com/736x/9a/8c/30/9a8c30c2a24b75455541e7a95c166543.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
     >
+      {/* Optimized Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="https://i.pinimg.com/736x/9a/8c/30/9a8c30c2a24b75455541e7a95c166543.jpg"
+          alt="Background"
+          fill
+          priority
+          quality={75}
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
+      
       {/* Background overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/85 via-slate-900/75 to-slate-950/95"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/85 via-slate-900/75 to-slate-950/95 z-[1]"></div>
 
       {/* Expanding Circle */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[2]">
         <ExpandingCircle size={300} />
       </div>
 
-      {/* Large Glowing Circle Graphic at Bottom */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] pointer-events-none">
+      {/* Large Glowing Circle Graphic at Bottom - Reduced blur */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] pointer-events-none z-[2]">
         {/* Outer rings */}
         <div className="absolute inset-0 rounded-full border-2 border-red-500/30 glowing-circle"></div>
         <div className="absolute inset-8 rounded-full border border-red-500/40 glowing-circle" style={{ animationDelay: '0.5s' } as React.CSSProperties}></div>
         <div className="absolute inset-16 rounded-full border border-red-400/30 glowing-circle" style={{ animationDelay: '1s' } as React.CSSProperties}></div>
         
-        {/* Center glow */}
-        <div className="absolute inset-24 rounded-full bg-gradient-to-br from-red-500/40 via-red-600/40 to-red-700/40 blur-2xl glowing-circle"></div>
+        {/* Center glow - Reduced blur intensity */}
+        <div className="absolute inset-24 rounded-full bg-gradient-to-br from-red-500/40 via-red-600/40 to-red-700/40 blur-xl glowing-circle"></div>
         
         {/* Light particles */}
         <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-red-400 rounded-full blur-sm"></div>

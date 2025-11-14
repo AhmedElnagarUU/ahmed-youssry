@@ -26,8 +26,17 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'ahmedelnagaruu.github.io',
       },
+      {
+        protocol: 'https',
+        hostname: 'i.pinimg.com',
+      },
     ],
+    // Optimize images
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60,
   },
+  // Enable compression
+  compress: true,
 };
 
 export default nextConfig;

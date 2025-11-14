@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useMemo } from 'react';
 
 interface SquareGridBackgroundProps {
   className?: string;
@@ -13,8 +15,21 @@ export default function SquareGridBackground({
   squareSize = 40,
   gap = 16
 }: SquareGridBackgroundProps) {
-  const squaresPerRow = Math.ceil(100 / (squareSize + gap));
-  const squaresPerCol = Math.ceil(100 / (squareSize + gap));
+  // Memoize the grid calculation to prevent re-renders
+  const gridConfig = useMemo(() => {
+    const squaresPerRow = Math.ceil(100 / (squareSize + gap));
+    const squaresPerCol = Math.ceil(100 / (squareSize + gap));
+    const totalSquares = squaresPerRow * squaresPerCol;
+    
+    // Pre-generate highlighted squares (static, not random on each render)
+    const highlightedIndices = new Set<number>();
+    const highlightCount = Math.floor(totalSquares * 0.05);
+    while (highlightedIndices.size < highlightCount) {
+      highlightedIndices.add(Math.floor(Math.random() * totalSquares));
+    }
+    
+    return { squaresPerRow, squaresPerCol, totalSquares, highlightedIndices };
+  }, [squareSize, gap]);
 
   return (
     <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
@@ -22,8 +37,8 @@ export default function SquareGridBackground({
         className="square-grid-pattern"
         style={{
           display: 'grid',
-          gridTemplateColumns: `repeat(${squaresPerRow}, ${squareSize}px)`,
-          gridTemplateRows: `repeat(${squaresPerCol}, ${squareSize}px)`,
+          gridTemplateColumns: `repeat(${gridConfig.squaresPerRow}, ${squareSize}px)`,
+          gridTemplateRows: `repeat(${gridConfig.squaresPerCol}, ${squareSize}px)`,
           gap: `${gap}px`,
           padding: `${gap}px`,
           width: '100%',
@@ -31,9 +46,8 @@ export default function SquareGridBackground({
           opacity: opacity
         }}
       >
-        {Array.from({ length: squaresPerRow * squaresPerCol }).map((_, i) => {
-          // Randomly highlight some squares with red neon
-          const isHighlighted = Math.random() < 0.05;
+        {Array.from({ length: gridConfig.totalSquares }).map((_, i) => {
+          const isHighlighted = gridConfig.highlightedIndices.has(i);
           return (
             <div
               key={i}

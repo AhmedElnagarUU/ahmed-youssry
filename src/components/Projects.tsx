@@ -84,6 +84,9 @@ export default function Projects() {
                     src={project.image}
                     alt={project.title}
                     fill
+                    loading={index < 3 ? "eager" : "lazy"}
+                    quality={75}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/60 to-transparent"></div>

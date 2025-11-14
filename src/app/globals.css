@@ -444,3 +444,49 @@ body {
     box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
   }
 }
+
+/* Performance Optimizations */
+
+/* Optimize backdrop blur - use sparingly */
+@supports (backdrop-filter: blur(12px)) {
+  .backdrop-blur-xl {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .backdrop-blur-md {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+}
+
+/* Reduce blur intensity for better performance */
+.blur-3xl {
+  filter: blur(40px); /* Reduced from 64px */
+}
+
+.blur-2xl {
+  filter: blur(24px); /* Reduced from 40px */
+}
+
+/* GPU acceleration for animations */
+.group {
+  will-change: transform;
+}
+
+.group:hover {
+  will-change: auto;
+}
+
+/* Use GPU acceleration for transforms */
+.scroll-slide-up,
+.scroll-fade-in,
+.scroll-scale {
+  will-change: transform, opacity;
+  transform: translateZ(0); /* Force GPU acceleration */
+}
