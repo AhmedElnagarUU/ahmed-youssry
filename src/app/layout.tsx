@@ -19,11 +19,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ahmed Youssry - Full Stack Developer",
     description: "Full Stack Developer with 2 years of experience building web applications from planning to deployment. Specialized in Clean Architecture, scalable systems, and modern web technologies.",
-    url: "https://yourdomain.com", // Replace with your actual domain when deployed
+    url: "https://ahmed-youssry.site/", // Replace with your actual domain when deployed
     siteName: "Ahmed Youssry Portfolio",
     images: [
       {
-        url: '/Capture.PNG', // Your image path in public folder
+        url: 'https://ahmed-youssry.site/Capture.PNG', // Your image path in public folder
         width: 1200,
         height: 630,
         alt: 'Ahmed Youssry - Full Stack Developer Portfolio',
